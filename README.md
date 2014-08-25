@@ -1,6 +1,9 @@
+[![Build Status](https://travis-ci.org/gustly/bulk_execution.svg?branch=master)](https://travis-ci.org/gustly/bulk_execution)
+
 # BulkExecution
 
-TODO: Write a gem description
+Execute a block over a collection of data keeping track of successes and failures, 
+the data that caused them, and the index of that data within the collection.
 
 ## Installation
 
@@ -18,7 +21,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+executor = BulkExecution::Exector.new(data)
+executor.execute do |execution_context|
+  begin
+    result = do_something(execution_context.data)
+    execution_context.record_success(result)
+  rescue
+    execution_context.record_failure($!)
+  end
+end
+```
 
 ## Contributing
 

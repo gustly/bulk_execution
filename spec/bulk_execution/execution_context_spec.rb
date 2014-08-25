@@ -26,7 +26,7 @@ describe BulkExecution::ExecutionContext do
       allow(result_set).to receive(:record_success)
     end
 
-    it "records a success in the results set" do
+    it "records a success in teh results set" do
       execution_context.record_success(success_arg)
       expect(result_set).to have_received(:record_success).with(data, index, success_arg)
     end
